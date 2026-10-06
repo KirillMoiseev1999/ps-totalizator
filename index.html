@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F1F5FF">
+  <meta name="description" content="Прошу Слова ИКИТ 2026 — тотализатор">
+  <title>Прошу Слова ИКИТ 2026 — Тотализатор</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-shape background-shape--one" aria-hidden="true"></div>
+  <div class="background-shape background-shape--two" aria-hidden="true"></div>
+  <div class="brand-star brand-star--large" aria-hidden="true"></div>
+  <div class="brand-star brand-star--medium" aria-hidden="true"></div>
+  <div class="brand-star brand-star--small" aria-hidden="true"></div>
+
+  <header class="topbar container">
+    <a class="brand" href="#top" aria-label="Прошу Слова ИКИТ 2026">
+      <div class="brand-logo-placeholder" aria-hidden="true">
+        <span>{</span><span class="brand-logo-rocket">▲</span><span>}</span>
+      </div>
+      <div class="brand-text">
+        <div class="brand-text__small">Молодёжный центр</div>
+        <div class="brand-text__main">ИКИТ СФУ</div>
+      </div>
+    </a>
+
+    <div class="event-badge">
+      <span>ПРОШУ СЛОВА</span>
+      <span>2026</span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy">
+        <span class="eyebrow">TOTALIZATOR // LIVE</span>
+        <h1>Выбери<br>своего <span>фаворита.</span></h1>
+        <p class="hero-lead">
+          Следи за коэффициентами в реальном времени и оставь заявку
+          на команду творческого направления.
+        </p>
+
+        <div class="hero-actions">
+          <button id="heroBetButton" class="button button--primary" type="button">
+            Сделать ставку
+          </button>
+          <a class="button button--ghost" href="#teams">Смотреть команды</a>
+        </div>
+      </div>
+
+      <aside class="bank-card" aria-live="polite">
+        <div class="bank-card__label">БАНК СЕЙЧАС</div>
+        <div id="poolValue" class="bank-card__value">0 ₽</div>
+        <div class="bank-card__footer">
+          <span id="systemStatus" class="status-pill status-pill--open">OPEN</span>
+          <span id="updatedAt" class="bank-card__updated">обновление...</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="container quick-steps" aria-label="Как сделать ставку">
+      <article class="quick-step">
+        <span>01</span>
+        <div><strong>Выбери команду</strong><small>Смотри коэффициент</small></div>
+      </article>
+      <article class="quick-step">
+        <span>02</span>
+        <div><strong>Укажи сумму</strong><small>От 100 до 1000 ₽</small></div>
+      </article>
+      <article class="quick-step">
+        <span>03</span>
+        <div><strong>Передай деньги</strong><small>Организатору после заявки</small></div>
+      </article>
+    </section>
+
+    <section id="teams" class="teams-section container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">LIVE MARKET</span>
+          <h2>Команды</h2>
+        </div>
+        <div class="market-note">
+          <strong>коэффициент сейчас</strong>
+          <span id="alphaValue">пока только модель</span>
+        </div>
+      </div>
+
+      <div id="teamsGrid" class="teams-grid">
+        <div class="loading-state">Загружаем коэффициенты…</div>
+      </div>
+    </section>
+
+    <section class="rules-section container">
+      <div class="rules-card">
+        <div class="rules-heading">
+          <span class="eyebrow">HOW IT WORKS</span>
+          <h2>Как это работает</h2>
+        </div>
+        <div class="rules-grid">
+          <article class="rule-card"><span>1</span><p>Заявка на сайте становится ставкой только после подтверждения наличных организатором.</p></article>
+          <article class="rule-card"><span>2</span><p>Подтверждённые деньги сразу влияют на текущие коэффициенты.</p></article>
+          <article class="rule-card"><span>3</span><p>После закрытия ставок финальные коэффициенты фиксируются и больше не меняются.</p></article>
+          <article class="rule-card"><span>4</span><p>Победителя определяет жюри. Популярность ставки не влияет на результат конкурса.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>ПРОШУ СЛОВА ИКИТ 2026</span>
+    <span>Молодёжный центр ИКИТ СФУ</span>
+  </footer>
+
+  <div id="betModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <section class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="betTitle">
+      <button class="modal__close" type="button" data-close-modal aria-label="Закрыть">×</button>
+
+      <div id="betFormState">
+        <span class="eyebrow">PLACE BET</span>
+        <h2 id="betTitle">Сделать ставку</h2>
+        <p class="modal__lead">Оставь заявку и передай указанную сумму организатору.</p>
+
+        <form id="betForm">
+          <label class="field">
+            <span>ФИО</span>
+            <input id="nameInput" name="name" type="text" maxlength="100" autocomplete="name" placeholder="Имя Фамилия" required>
+          </label>
+
+          <label class="field">
+            <span>Команда</span>
+            <select id="teamInput" name="teamId" required></select>
+          </label>
+
+          <label class="field">
+            <span>Сумма, ₽</span>
+            <input id="amountInput" name="amount" type="number" min="100" max="1000" step="100" value="500" required>
+          </label>
+
+          <div class="bet-preview">
+            <div><span>Коэффициент сейчас</span><strong id="selectedTeamK">—</strong></div>
+            <div><span>Ориентировочная выплата</span><strong id="potentialPayout">—</strong></div>
+          </div>
+
+          <button id="submitBetButton" class="button button--primary button--full" type="submit">
+            Подтвердить заявку
+          </button>
+          <p id="formError" class="form-error" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div id="ticketState" class="ticket-state" hidden></div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="public-api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
